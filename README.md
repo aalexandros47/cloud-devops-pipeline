@@ -1,6 +1,10 @@
 # cloud-devops-pipeline
 Repository for automating a DevOps pipeline project with CI/CD and monitoring
 
+# DevOps Pipeline Project
+Updated README to test Jenkins build trigger.
+
+
 # DevOps Pipeline Automation
 
 This repository contains the setup for a DevOps pipeline project with CI/CD automation, monitoring, and deployment.
