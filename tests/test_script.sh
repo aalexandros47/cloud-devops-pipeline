@@ -1,2 +1,3 @@
-# test_script.sh
-echo "Running basic test"
+#!/bin/bash
+echo "Running basic test..."
+echo "Build completed!"
