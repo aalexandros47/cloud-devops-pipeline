@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh './tests/test_script.sh' // Replace with your actual test command
+                sh './tests/detailed_test.sh'// Replace with your actual test command
             }
         }
         stage('Deploy') {
