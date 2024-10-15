@@ -7,7 +7,7 @@ set -e
 REMOTE_USER="rexy"                   # Your SSH username
 REMOTE_HOST="34.230.56.158"          # Your remote server IP address
 REMOTE_PATH="/home/rexy/app"         # Desired path on the remote server
-LOCAL_PATH="/home/rexy"  # Local path to the files you want to deploy
+LOCAL_PATH="/home/rexy/path_to_your_files"  # Local path to the files you want to deploy
 
 # Make sure the local path exists
 if [ ! -d "$LOCAL_PATH" ]; then
