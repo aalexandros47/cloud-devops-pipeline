@@ -3,22 +3,22 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/your-repo-url'
+                git 'https://github.com/your-repo-url' // Replace with your actual repository URL
             }
         }
         stage('Build') {
             steps {
-                sh 'echo "Building..."' // Replace with actual build command
+                sh './build_script.sh' // Replace with your actual build command
             }
         }
         stage('Test') {
             steps {
-                sh 'echo "Running Tests..."' // Replace with actual test command
+                sh './tests/test_script.sh' // Replace with your actual test command
             }
         }
         stage('Deploy') {
             steps {
-                sh 'echo "Deploying..."' // Replace with actual deploy command
+                sh './deploy_script.sh' // Replace with your actual deploy command
             }
         }
     }
