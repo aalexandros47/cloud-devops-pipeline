@@ -7,17 +7,22 @@ set -e
 REMOTE_USER="rexy"                   # Your SSH username
 REMOTE_HOST="34.230.56.158"          # Your remote server IP address
 REMOTE_PATH="/home/rexy/app"         # Desired path on the remote server
-LOCAL_PATH="/home/rexy"              # Local path to the files you want to deploy
+LOCAL_FILES="./*"                     # This matches all files in the current directory
 
-# Make sure the local path exists
-if [ ! -d "$LOCAL_PATH" ]; then
-    echo "Local path $LOCAL_PATH does not exist."
+# Print debugging information
+echo "Current directory: $(pwd)"
+echo "Contents of the current directory:"
+ls -la
+
+# Make sure at least one file exists in the current directory
+if [ -z "$(ls -A $LOCAL_FILES)" ]; then
+    echo "No files found in the current directory."
     exit 1
 fi
 
-echo "Deploying application from $LOCAL_PATH to $REMOTE_USER@$REMOTE_HOST:$REMOTE_PATH..."
+echo "Deploying application to $REMOTE_USER@$REMOTE_HOST:$REMOTE_PATH..."
 
 # Copy files to the remote server
-scp -r "$LOCAL_PATH" "$REMOTE_USER@$REMOTE_HOST:$REMOTE_PATH"
+scp -r $LOCAL_FILES "$REMOTE_USER@$REMOTE_HOST:$REMOTE_PATH"
 
 echo "Deployment completed successfully."
