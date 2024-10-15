@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh './deploy_script.sh' // Replace with your actual deploy command
+                sh './scripts/deploy_script.sh' // Replace with your actual deploy command
             }
         }
     }
