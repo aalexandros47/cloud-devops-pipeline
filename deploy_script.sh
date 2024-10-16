@@ -2,8 +2,8 @@
 echo "Starting deployment..."
 
 # Define variables
-SSH_KEY_PATH="~/.ssh/your-private-key.pem"  # Replace with the path to your SSH key
-DEPLOY_USER="your-username"                # Replace with your SSH username on the target server
+SSH_KEY_PATH="~/.ssh/new-jenkins-key.pem"  # Replace with the path to your SSH key
+DEPLOY_USER="ec2-user"                # Replace with your SSH username on the target server
 TARGET_IP="34.230.56.158"                  # Replace with the IP of the target server
 TARGET_DIR="/home/your-username/app"       # Replace with the desired directory on the target server
 
