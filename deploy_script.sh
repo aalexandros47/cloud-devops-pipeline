@@ -1,28 +1,19 @@
 #!/bin/bash
-
-# Exit immediately if a command exits with a non-zero status
-set -e
+echo "Starting deployment..."
 
 # Define variables
-REMOTE_USER="rexy"                   # Your SSH username
-REMOTE_HOST="34.230.56.158"          # Your remote server IP address
-REMOTE_PATH="/home/rexy/app"         # Desired path on the remote server
-LOCAL_FILES="./*"                     # This matches all files in the current directory
+SSH_KEY_PATH="~/.ssh/your-private-key.pem"  # Replace with the path to your SSH key
+DEPLOY_USER="your-username"                # Replace with your SSH username on the target server
+TARGET_IP="34.230.56.158"                  # Replace with the IP of the target server
+TARGET_DIR="/home/your-username/app"       # Replace with the desired directory on the target server
 
-# Print debugging information
-echo "Current directory: $(pwd)"
-echo "Contents of the current directory:"
-ls -la
+# Use SSH Agent to load the key (optional)
+echo "Starting SSH agent and adding private key..."
+eval "$(ssh-agent -s)"
+ssh-add $SSH_KEY_PATH
 
-# Make sure at least one file exists in the current directory
-if [ -z "$(ls -A $LOCAL_FILES)" ]; then
-    echo "No files found in the current directory."
-    exit 1
-fi
+# Deploy application files
+echo "Deploying application to $TARGET_IP..."
+scp -i $SSH_KEY_PATH -r src $DEPLOY_USER@$TARGET_IP:$TARGET_DIR
 
-echo "Deploying application to $REMOTE_USER@$REMOTE_HOST:$REMOTE_PATH..."
-
-# Copy files to the remote server
-scp -r $LOCAL_FILES "$REMOTE_USER@$REMOTE_HOST:$REMOTE_PATH"
-
-echo "Deployment completed successfully."
+echo "Deployment completed!"
